@@ -1,0 +1,21 @@
+date,description,amount,category
+2026-01-05,Big Bazaar Groceries,2500,food
+2026-01-07,Uber to Office,350,transport
+2026-01-10,Lunch at Restaurant,1200,food
+2026-01-12,Movie Tickets PVR,800,entertainment
+2026-01-15,Electricity Bill MSEB,1500,utilities
+2026-01-18,Amazon Electronics,3500,shopping
+2026-01-20,Petrol Indian Oil,2000,transport
+2026-01-22,Starbucks Coffee,400,food
+2026-01-25,Netflix Subscription,199,entertainment
+2026-01-28,DMart Groceries,3000,food
+2026-02-01,BEST Bus Pass,500,transport
+2026-02-03,Office Lunch,600,food
+2026-02-05,Flipkart Clothes,2500,shopping
+2026-02-08,Apollo Pharmacy,1200,healthcare
+2026-02-10,Dinner with Friends,1500,food
+2026-02-12,Ola Auto,200,transport
+2026-02-15,Swiggy Order,800,food
+2026-02-18,Amazon Books,1500,shopping
+2026-02-20,Water Bill,800,utilities
+2026-02-22,Gym Membership,2000,healthcare
