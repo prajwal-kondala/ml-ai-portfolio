@@ -1,0 +1,45 @@
+=======================================================
+COVID VACCINATION STATISTICAL REPORT
+Analyst: Prajwal Kondala | IIT Kharagpur
+=======================================================
+
+
+India
+------------------------------
+Total Vaccinations: 1,834,500,657
+Mean Daily:         4,175,994
+Max Single Day:     10,037,995
+Std Deviation:      2,484,446
+Fully Vaccinated:   59.4%
+
+United States
+------------------------------
+Total Vaccinations: 560,181,791
+Mean Daily:         1,191,727
+Max Single Day:     3,506,960
+Std Deviation:      803,580
+Fully Vaccinated:   65.5%
+
+United Kingdom
+------------------------------
+Total Vaccinations: 140,968,337
+Mean Daily:         314,084
+Max Single Day:     970,350
+Std Deviation:      178,369
+Fully Vaccinated:   72.4%
+
+Brazil
+------------------------------
+Total Vaccinations: 413,559,595
+Mean Daily:         943,529
+Max Single Day:     1,941,268
+Std Deviation:      446,214
+Fully Vaccinated:   74.9%
+
+Germany
+------------------------------
+Total Vaccinations: 171,940,027
+Mean Daily:         376,158
+Max Single Day:     1,132,105
+Std Deviation:      275,080
+Fully Vaccinated:   75.3%
