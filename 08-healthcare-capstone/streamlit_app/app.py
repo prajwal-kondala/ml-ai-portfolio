@@ -20,7 +20,7 @@ st.markdown("""
 
 @st.cache_data
 def load_data():
-    pd.read_csv("heart_disease_cleaned.csv")
+    pd.read_csv("./heart_disease_cleaned.csv")
     categorical_cols = ["sex", "cp", "fbs", "restecg",
                         "exang", "slope", "ca", "thal", "target"]
     for col in categorical_cols:
