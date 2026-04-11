@@ -20,7 +20,7 @@ st.markdown("""
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("08-healthcare-capstone/streamlit_app/heart_disease_cleaned.csv")
+    pd.read_csv("heart_disease_cleaned.csv")
     categorical_cols = ["sex", "cp", "fbs", "restecg",
                         "exang", "slope", "ca", "thal", "target"]
     for col in categorical_cols:
@@ -32,7 +32,7 @@ def load_data():
                   (df["chol"]>=200)&(df["chol"]<240),
                   df["chol"]>=240]
     df["chol_risk"] = np.select(conditions,
-        ["Normal","Borderline High","High Risk"])
+        ["Normal","Borderline High","High Risk"], default='Unknown')
     df["high_hr"] = np.where(df["thalach"] > 150, 1, 0)
     df["oldpeak_log"] = np.log1p(df["oldpeak"])
     return df
