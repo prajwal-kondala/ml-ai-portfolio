@@ -20,26 +20,29 @@ st.markdown("""
 
 @st.cache_data
 def load_data():
-    pd.read_csv("./heart_disease_cleaned.csv")
+    df = pd.read_csv("heart_disease_cleaned.csv")
     categorical_cols = ["sex", "cp", "fbs", "restecg",
                         "exang", "slope", "ca", "thal", "target"]
     for col in categorical_cols:
         df[col] = df[col].astype("category")
-    df["age_group"] = pd.cut(df["age"], bins=[0,40,50,60,100],
+    df["age_group"] = pd.cut(df["age"],
+        bins=[0,40,50,60,100],
         labels=["Young (<40)","Middle (40-50)",
                 "Senior (50-60)","Elderly (60+)"])
-    conditions = [df["chol"]<200,
-                  (df["chol"]>=200)&(df["chol"]<240),
-                  df["chol"]>=240]
+    conditions = [
+        df["chol"] < 200,
+        (df["chol"] >= 200) & (df["chol"] < 240),
+        df["chol"] >= 240
+    ]
     df["chol_risk"] = np.select(conditions,
-        ["Normal","Borderline High","High Risk"], default='Unknown')
+        ["Normal","Borderline High","High Risk"],
+        default="Unknown")
     df["high_hr"] = np.where(df["thalach"] > 150, 1, 0)
     df["oldpeak_log"] = np.log1p(df["oldpeak"])
     return df
 
 df = load_data()
 
-# Sidebar
 st.sidebar.title("🔍 Filters")
 st.sidebar.markdown("---")
 
@@ -64,30 +67,36 @@ target_options = st.sidebar.multiselect(
     format_func=lambda x: "Disease" if x == 1 else "No Disease"
 )
 
-# Filter
 filtered_df = df[
     (df["age"].between(age_range[0], age_range[1])) &
     (df["sex"].astype(int).isin(gender_options)) &
     (df["target"].astype(int).isin(target_options))
 ]
 
-# KPI Metrics
 st.markdown("### 📊 Key Metrics")
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.metric("Total Patients", len(filtered_df))
 with col2:
-    disease_rate = (filtered_df["target"].astype(int)==1).mean()*100
-    st.metric("Disease Rate", f"{disease_rate:.1f}%")
+    if len(filtered_df) > 0:
+        disease_rate = (filtered_df["target"].astype(int)==1).mean()*100
+        st.metric("Disease Rate", f"{disease_rate:.1f}%")
+    else:
+        st.metric("Disease Rate", "N/A")
 with col3:
-    st.metric("Avg Age", f"{filtered_df['age'].mean():.1f} yrs")
+    if len(filtered_df) > 0:
+        st.metric("Avg Age", f"{filtered_df['age'].mean():.1f} yrs")
+    else:
+        st.metric("Avg Age", "N/A")
 with col4:
-    st.metric("Avg Cholesterol", f"{filtered_df['chol'].mean():.0f} mg/dl")
+    if len(filtered_df) > 0:
+        st.metric("Avg Cholesterol", f"{filtered_df['chol'].mean():.0f} mg/dl")
+    else:
+        st.metric("Avg Cholesterol", "N/A")
 
 st.divider()
 
-# Row 1
 col1, col2 = st.columns(2)
 
 with col1:
@@ -102,21 +111,21 @@ with col1:
 
 with col2:
     st.markdown("### 💔 Chest Pain Type vs Disease")
-    cp_data = filtered_df.groupby(
-        ["cp","target"], observed=True
-    ).size().reset_index(name="count")
-    fig2 = px.bar(
-        cp_data, x="cp", y="count", color="target",
-        barmode="group",
-        color_discrete_map={0:"steelblue", 1:"crimson"},
-        labels={"cp":"Chest Pain Type (0-3)",
-                "target":"Heart Disease"}
-    )
-    st.plotly_chart(fig2, use_container_width=True)
+    if len(filtered_df) > 0:
+        cp_data = filtered_df.groupby(
+            ["cp","target"], observed=True
+        ).size().reset_index(name="count")
+        fig2 = px.bar(
+            cp_data, x="cp", y="count", color="target",
+            barmode="group",
+            color_discrete_map={0:"steelblue", 1:"crimson"},
+            labels={"cp":"Chest Pain Type (0-3)",
+                    "target":"Heart Disease"}
+        )
+        st.plotly_chart(fig2, use_container_width=True)
 
 st.divider()
 
-# Row 2
 col1, col2 = st.columns(2)
 
 with col1:
@@ -146,7 +155,6 @@ with col2:
 
 st.divider()
 
-# Hypothesis Results
 st.markdown("### 📋 Statistical Hypothesis Test Results")
 col1, col2, col3 = st.columns(3)
 
@@ -179,7 +187,6 @@ with col3:
 
 st.divider()
 
-# Key Insights
 st.markdown("### 💡 Key Insights")
 st.info("""
 **Counterintuitive Findings:**
@@ -187,7 +194,7 @@ st.info("""
 1. 🔴 Younger patients show higher disease rate — Middle age (40-50): 69.7%!
 2. 🔴 Females show higher disease rate (75% vs 44.7%) — selection bias!
 3. 🔴 High cholesterol does NOT mean more disease!
-4. ✅ Max heart rate is strongest predictor (t=8.01, p≈0.0000)!
+4. ✅ Max heart rate is strongest predictor (t=8.01, p=0.0000)!
 5. ✅ Non-anginal chest pain (cp=2) most associated with disease!
 """)
 
@@ -200,5 +207,4 @@ st.markdown("---")
 st.markdown("""
 *Project 08 — Healthcare Data Analytics Pipeline*
 *Prajwal Kondala | IIT Kharagpur | April 2026*
-*IIT KGP → AI/ML Engineer 🎯*
 """)
