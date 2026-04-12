@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.x-blue)](https://python.org)
 [![Pandas](https://img.shields.io/badge/Pandas-2.2.2-yellow)](https://pandas.pydata.org)
-[![Streamlit](https://img.shields.io/badge/Streamlit-Live-brightgreen)](YOUR_STREAMLIT_URL_HERE)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Live-brightgreen)](https://prajwal-healthcare.streamlit.app)
 [![Plotly](https://img.shields.io/badge/Plotly-Interactive-orange)](https://plotly.com)
 [![SciPy](https://img.shields.io/badge/SciPy-Stats-purple)](https://scipy.org)
 [![ReportLab](https://img.shields.io/badge/ReportLab-PDF-red)](https://reportlab.com)
@@ -25,7 +25,7 @@
 
 ## 🚀 Live Demo
 
-🔗 **[Healthcare Analytics Dashboard — Live App](YOUR_STREAMLIT_URL_HERE)**
+🔗 **[Healthcare Analytics Dashboard — Live App](https://prajwal-healthcare.streamlit.app)**
 
 *Explore 302 patient records interactively — filter by age, gender, disease status!*
 
