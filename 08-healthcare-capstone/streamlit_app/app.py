@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
+import os
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -20,7 +21,7 @@ st.markdown("""
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("heart_disease_cleaned.csv")
+    df = pd.read_csv(os.path.join(os.path.dirname(__file__), "heart_disease_cleaned.csv"))
     categorical_cols = ["sex", "cp", "fbs", "restecg",
                         "exang", "slope", "ca", "thal", "target"]
     for col in categorical_cols:
