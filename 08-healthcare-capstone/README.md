@@ -405,7 +405,7 @@ Features:
 - **Key insights panel** — counterintuitive findings highlighted
 - **Raw data toggle** — full data view on demand
 
-🔗 **[Open Live Dashboard](YOUR_STREAMLIT_URL_HERE)**
+🔗 **[Open Live Dashboard](https://prajwal-healthcare.streamlit.app)**
 
 ---
 
