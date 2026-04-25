@@ -46,6 +46,25 @@ with tree-based models and richer feature engineering.
 
 ---
 
+## 📊 Visualisations
+
+### Sales Distribution & Weekly Demand Pattern
+![Sales Distribution](screenshots/sales_distribution.png)
+
+### Promotion Impact on Daily Revenue
+![Promo Analysis](screenshots/promo_analysis.png)
+
+### Gradient Descent — Model Learning Curve
+![Cost Convergence](screenshots/cost_convergence.png)
+
+### Feature Coefficients — What Drives Sales
+![Feature Importance](screenshots/feature_importance.png)
+
+### Predicted vs Actual Sales — Baseline Performance
+![Predictions vs Actual](screenshots/predictions_vs_actual.png)
+
+---
+
 ## 🔬 Model Results
 
 | Method | R² | RMSE |
