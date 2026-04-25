@@ -1,0 +1,12 @@
+# Data files — too large for GitHub!
+data/
+
+# Mac system files
+.DS_Store
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Model files in models/ folder — kept locally
+# Copies in app/ folder ARE pushed for deployment!
+models/
