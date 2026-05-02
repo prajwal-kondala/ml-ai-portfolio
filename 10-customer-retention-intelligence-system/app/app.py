@@ -246,15 +246,43 @@ if st.button("🔮 Predict Churn Risk", type="primary"):
         st.metric("Net Benefit of Action", net)
 
 # =============================================
+# Model Details — Tabs
+# =============================================
+st.markdown("---")
+st.header("🔬 Model Details")
+
+tab1, tab2 = st.tabs(["📊 Performance", "🔧 Methodology"])
+
+with tab1:
+    st.markdown("""
+    | Method | Recall | Precision | F1 | AUC |
+    |--------|--------|-----------|-----|-----|
+    | **Logistic Regression** ✅ | **0.80** | 0.49 | 0.61 | **0.835** |
+    | Decision Tree | 0.78 | 0.47 | 0.59 | 0.818 |
+
+    **Primary metric: Recall** — catching churners matters most!
+    Missing a churner = ₹5,000 lost. False alarm = ₹500 wasted.
+    """)
+
+with tab2:
+    st.markdown("""
+    This model learns from IBM Telco customer data to identify
+    customers likely to cancel their subscription. It analyzes
+    30 customer attributes including contract type, tenure and
+    monthly charges.
+
+    Built using Logistic Regression with a recall-optimized
+    threshold of 0.4 — prioritizing catching churners over
+    avoiding false alarms. Missing a churner costs ₹5,000
+    while a false alarm costs only ₹500.
+    """)
+
+# =============================================
 # Footer
 # =============================================
 st.markdown("---")
 st.markdown("""
-*Baseline Logistic Regression model (recall-optimized)*
-
-*models/ → training artifacts*
-*app/ → deployment-ready copies for Streamlit hosting*
-
 *Project 10 of 22 | Phase 2: Machine Learning*
 *Prajwal Kondala | IIT KGP → AI/ML Engineer | May 2026*
+*Dataset: IBM Telco Customer Churn — Kaggle*
 """)
