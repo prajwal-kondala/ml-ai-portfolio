@@ -640,16 +640,7 @@ elif "Live Prediction" in page:
                     'bar': {'color': gauge_color},
                     'bgcolor': '#1A1A2E',
                     'bordercolor': '#2A2A4E',
-                    'steps': [
-                        {'range': [0, 40],  'color': '#22C55E22'},
-                        {'range': [40, 70], 'color': '#F59E0B22'},
-                        {'range': [70, 100],'color': '#EF444422'},
-                    ],
-                    'threshold': {
-                        'line' : {'color': gauge_color, 'width': 4},
-                        'thickness': 0.75,
-                        'value': round(prob * 100, 1),
-                    }
+
                 },
                 title={
                     'text': 'Churn Probability',
