@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
+import joblib
 import os
 import plotly.express as px
 import plotly.graph_objects as go
@@ -115,6 +116,7 @@ st.markdown("""
 # =============================================
 @st.cache_resource
 def load_all_models():
+    import joblib
     base = os.path.dirname(__file__)
 
     models = {}
@@ -128,13 +130,15 @@ def load_all_models():
     }
 
     for name, filename in model_files.items():
-        path = os.path.join(base, filename)
-        with open(path, 'rb') as f:
-            models[name] = pickle.load(f)
+        try:
+            path = os.path.join(base, filename)
+            models[name] = joblib.load(path)
+        except Exception:
+            continue
 
     feature_path = os.path.join(base, 'feature_names.pkl')
     with open(feature_path, 'rb') as f:
-        feature_names = pickle.load(f)
+        feature_names = joblib.load(feature_path)
 
     return models, feature_names
 
